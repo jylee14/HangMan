@@ -7,15 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="9*"/>    <!-- 0: The Hangman Graphics -->
+            <RowDefinition Height="8*"/>    <!-- 0: The Hangman Graphics -->
             <RowDefinition Height="1*"/>    <!-- 1: Word Length -->
             <RowDefinition Height="1*"/>    <!-- 2: Letters in word -->
             <RowDefinition Height="1*"/>    <!-- 3: Incorrect Guesses -->
             <RowDefinition Height="4*"/>    <!-- 4: Alphabet buttons -->
         </Grid.RowDefinitions>
-
+        
         <!-- Start Image -->
         <Image Name="hangman"  Source="Assets/0.png"/>
 

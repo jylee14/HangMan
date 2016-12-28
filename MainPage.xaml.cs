@@ -80,14 +80,8 @@ namespace Hangman
         // check to see if the word (name of the button) is a valid guess by calling guess function
         private void Click(object sender, RoutedEventArgs e)
         {
-            if (misses < 4)
+            if (misses < 5)
                 guess(((Control)sender).Name);
-            else
-            {
-                guess(((Control)sender).Name);
-                reveal.IsEnabled = true;
-                game = false;
-            }
         }
 
         /**
@@ -96,9 +90,9 @@ namespace Hangman
          *              If it is a duplicate guess, ignore it. 
          */
         private void guess(string letter){
-            if (game)
+            if (game)   //is the game still going
             {
-                if (word.Contains(letter))
+                if (word.Contains(letter))  //correct guess
                 {
                     if (!right.Contains(letter))
                     {
@@ -110,7 +104,7 @@ namespace Hangman
                         right.Add(letter);
                         check();
                     }
-                }else{
+                }else{  //wrong guess
                     if (!miss.Contains(letter))
                     {
                         Wrong.Text += " " + letter;
@@ -127,7 +121,7 @@ namespace Hangman
         {
             try
             {
-                if (wordArr.SequenceEqual(guesses))
+                if (wordArr.SequenceEqual(guesses)) //player wins, try to set the image to win image
                 {
                     game = false;
                     hangman.Source = new BitmapImage(new Uri("ms-appx:///Assets/win.png"));
@@ -143,12 +137,24 @@ namespace Hangman
         //change the image to appropriate number. 
         private async void changeImage(int missCount)
         {
-            if (missCount < 6)
+            if (missCount < 5)  //still got some guesses left 
             {
                 try
                 {
                     Uri baseUri = new Uri("ms-appx:///Assets/");
                     hangman.Source = new BitmapImage(new Uri(baseUri, misses.ToString() + ".png"));
+                }
+                catch (Exception)
+                {
+                    var mbox = new MessageDialog("Something went wrong while handling input", "Error");
+                    await mbox.ShowAsync();
+                }
+            }else{   //game over at this point 
+                try
+                {
+                    hangman.Source = new BitmapImage(new Uri("ms-appx:///Assets/5.png"));
+                    reveal.IsEnabled = true;
+                    game = false;
                 }
                 catch (Exception)
                 {

@@ -78,7 +78,7 @@ namespace Hangman
                 Window.Current.Activate();
             }            
         }
-
+        
         /// <summary>
         /// Invoked when Navigation to a certain page fails
         /// </summary>

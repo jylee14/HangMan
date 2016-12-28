@@ -15,7 +15,7 @@ namespace Hangman
     class words
     {
         List<string> dictionary = new List<string>();
-        string[] backup = { "book", "golf", "reddit", "youtube", "author", "canada", "duck" };  //just in case load fails 
+        string[] backup = { "books", "book", "golf", "reddit", "youtube", "author", "canada", "duck" };  //just in case load fails 
         public words(string fileName)
         {          
             loadFile(fileName);            
