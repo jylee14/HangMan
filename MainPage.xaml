@@ -7,116 +7,35 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="8*"/>    <!-- 0: The Hangman Graphics -->
-            <RowDefinition Height="1*"/>    <!-- 1: Word Length -->
-            <RowDefinition Height="1*"/>    <!-- 2: Letters in word -->
-            <RowDefinition Height="1*"/>    <!-- 3: Incorrect Guesses -->
-            <RowDefinition Height="4*"/>    <!-- 4: Alphabet buttons -->
-        </Grid.RowDefinitions>
-        
-        <!-- Start Image -->
-        <Image Name="hangman"  Source="Assets/0.png"/>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Image Source="ms-appx:///Assets/menu.png"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <TextBlock 
-                FontSize="25"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Margin="10, 0, 0, 0">Length:</TextBlock>
-
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <TextBlock
-                Name="Length"
-                FontSize="25"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Margin="10, 0, 0, 0"></TextBlock>
-        </StackPanel>
-        
-        <!-- Correct Guesses  -->
-        <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <TextBlock 
-                FontSize="25"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Margin="10, 0, 0, 0">Word:</TextBlock>
+                HorizontalAlignment="Center"
+                Margin="0, 0, 0, 10"
+                FontSize="20"
+                FontFamily="Arial"
+            >CHOOSE GAME DIFFICULTY</TextBlock>
 
-            <TextBlock
-                Name="Word"
-                FontSize="25"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Margin="10, 0, 0, 0"></TextBlock>
-        </StackPanel>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0, 0, 0, 15">
+                <Button
+                    Name="easy"
+                    Margin="0, 0, 10, 0"
+                    Click="level_Click"
+                >EASY</Button>
 
-        <!-- Incorrect Guess  -->
-        <StackPanel Orientation="Horizontal" Grid.Row="3">
-            <TextBlock
-                FontSize="25"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Margin="10, 0, 0, 0">Misses:</TextBlock>
-            <TextBlock 
-                Name="Wrong"
-                FontSize="25"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                TextWrapping="Wrap"
-                Margin="10, 0, 0, 0"></TextBlock>
-        </StackPanel>
+                <Button
+                    Name="medium"
+                    Margin="0, 0, 10, 0"
+                    Click="level_Click"
+                >MEDIUM</Button>
 
-
-        <!-- Alphabet Buttons -->
-        <StackPanel Name="Keyboard" Orientation="Vertical" Grid.Row="4" Margin="0, 10, 0, 0">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Name="q" Click="Click" Margin="5, 5, 0, 0">Q</Button>
-                <Button Name="w" Click="Click" Margin="5, 5, 0, 0">W</Button>
-                <Button Name="e" Click="Click" Margin="5, 5, 0, 0">E</Button>
-                <Button Name="r" Click="Click" Margin="5, 5, 0, 0">R</Button>
-                <Button Name="t" Click="Click" Margin="5, 5, 0, 0">T</Button>
-                <Button Name="y" Click="Click" Margin="5, 5, 0, 0">Y</Button>
-                <Button Name="u" Click="Click" Margin="5, 5, 0, 0">U</Button>
-                <Button Name="i" Click="Click" Margin="5, 5, 0, 0">I</Button>
-                <Button Name="o" Click="Click" Margin="5, 5, 0, 0">O</Button>
-                <Button Name="p" Click="Click" Margin="5, 5, 0, 0">P</Button>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Name="a" Click="Click" Margin="5, 5, 0, 0">A</Button>
-                <Button Name="s" Click="Click" Margin="5, 5, 0, 0">S</Button>
-                <Button Name="d" Click="Click" Margin="5, 5, 0, 0">D</Button>
-                <Button Name="f" Click="Click" Margin="5, 5, 0, 0">F</Button>
-                <Button Name="g" Click="Click" Margin="5, 5, 0, 0">G</Button>
-                <Button Name="h" Click="Click" Margin="5, 5, 0, 0">H</Button>
-                <Button Name="j" Click="Click" Margin="5, 5, 0, 0">J</Button>
-                <Button Name="k" Click="Click" Margin="5, 5, 0, 0">K</Button>
-                <Button Name="l" Click="Click" Margin="5, 5, 0, 0">L</Button>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Name="z" Click="Click" Margin="5, 5, 0, 0">Z</Button>
-                <Button Name="x" Click="Click" Margin="5, 5, 0, 0">X</Button>
-                <Button Name="c" Click="Click" Margin="5, 5, 0, 0">C</Button>
-                <Button Name="v" Click="Click" Margin="5, 5, 0, 0">V</Button>
-                <Button Name="b" Click="Click" Margin="5, 5, 0, 0">B</Button>
-                <Button Name="n" Click="Click" Margin="5, 5, 0, 0">N</Button>
-                <Button Name="m" Click="Click" Margin="5, 5, 0, 0">M</Button>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Name="reveal" 
-                        FontSize="15" 
-                        HorizontalAlignment="Center"
-                        Click="reveal_Click"
-                        Margin="0, 5, 0, 0"
-                        IsEnabled="False">Show</Button>
-                
-                <Button Name="newGame" 
-                        FontSize="15" 
-                        HorizontalAlignment="Center"
-                        Click="newGame_Click"
-                        Margin="25, 5, 0, 0">Reset</Button>
+                <Button
+                    Name="hard"
+                    Margin="0, 0, 0, 0"
+                    Click="level_Click"
+                >HARD</Button>
             </StackPanel>
         </StackPanel>
     </Grid>
